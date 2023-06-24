@@ -47,9 +47,6 @@ mypy-extensions==1.0.0
 nltk==3.8.1
 numexpr==2.8.4
 numpy==1.24.1
-openai==0.26.4
-openai-whisper @ git+https://github.com/openai/whisper.git@7858aa9c08d98f75575035ecd6481f462d66ca27
-openapi-schema-pydantic==1.2.4
 packaging==23.0
 pandas==2.0.1
 Pillow==9.4.0
