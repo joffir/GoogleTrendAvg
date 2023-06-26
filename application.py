@@ -1,3 +1,4 @@
+from noaa import *
 from flask import Flask, render_template, request, url_for
 import pandas as pd
 import matplotlib
@@ -15,6 +16,12 @@ def index():
         generate_chart(keyword_in)
         return render_template('chart.html')
     return render_template('index.html')
+
+@app.route('/noaa')
+def noaa():
+    generate_noaa()
+    return render_template('noaa.html')
+
 
 def generate_chart(keyword_in):
     current_year = datetime.now().year # Current year so the code can be reused in the future
