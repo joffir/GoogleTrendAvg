@@ -41,7 +41,7 @@ date,ac repair,isPartial
 2019-03-31,49,False
 2019-04-07,54,False
 2019-04-14,50,False
-2019-04-21,57,False
+2019-04-21,56,False
 2019-04-28,63,False
 2019-05-05,57,False
 2019-05-12,61,False
@@ -160,7 +160,7 @@ date,ac repair,isPartial
 2021-07-11,79,False
 2021-07-18,78,False
 2021-07-25,80,False
-2021-08-01,66,False
+2021-08-01,65,False
 2021-08-08,75,False
 2021-08-15,67,False
 2021-08-22,70,False

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/f5567172-a773-466d-ba80-bf41f7cf0223/resourceGroups/GoogleTrendAvg_group/providers/Microsoft.Web/sites/trendappweather",
+    "appService.deploySubpath": "."
+}
