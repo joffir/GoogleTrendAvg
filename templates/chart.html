@@ -5,7 +5,12 @@
 </head>
 <body>
     <h2>Keyword Search Trends Chart</h2>
-    <a href="{{ url_for('index') }}">New Search</a>
+    <form action="/" method="POST">
+        <label for="keyword">Enter a keyword:</label>
+        <input type="text" id="keyword" name="keyword" required>
+        <input type="submit" value="Go">
+    </form>
+    <br>
     <img src="{{ url_for('static', filename='chart.png') }}" alt="Search Trends Chart"> <br>
     <img src="{{ url_for('static', filename='chart2.png') }}" alt="Search Trends Chart with Years">
 
