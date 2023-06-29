@@ -47,8 +47,8 @@ def generate_chart(keyword_in):
 
     plt.figure(figsize=(10, 6))  # Set the figure size
 
-    plt.plot(year_current_df['WeekNumber'], year_current_df[keyword], label=current_year, linewidth=2.5, linestyle='solid')
     plt.plot(average_df['WeekNumber'], average_df[keyword], label='Average Past 4 Years', linewidth=2.5, linestyle='solid')
+    plt.plot(year_current_df['WeekNumber'], year_current_df[keyword], label=current_year, linewidth=2.5, linestyle='solid')
     plt.plot(yearsub_1_current_df['WeekNumber'], yearsub_1_current_df[keyword], label=(current_year-1), linewidth=1.0, linestyle='dashed')
     plt.plot(yearsub_2_current_df['WeekNumber'], yearsub_2_current_df[keyword], label=(current_year-2), linewidth=1.0, linestyle='dashed')
     plt.plot(yearsub_3_current_df['WeekNumber'], yearsub_3_current_df[keyword], label=(current_year-3), linewidth=1.0, linestyle='dashed')
@@ -63,4 +63,4 @@ def generate_chart(keyword_in):
     plt.close()
 
 # FOR TEST:
-generate_chart('ac repair')
+#generate_chart('ac repair')
