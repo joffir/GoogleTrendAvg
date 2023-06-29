@@ -22,7 +22,6 @@ def generate_chart(keyword_in):
 
     df['date'] = pd.to_datetime(df['date'])
     df['WeekNumber'] = df['date'].apply(lambda x: datetime.strftime(x, "%U"))
-    print(df)
 
     filtered_df = df[df['date'].dt.year < current_year]
     average_df = filtered_df.groupby('WeekNumber')[keyword].mean().reset_index()
@@ -32,13 +31,36 @@ def generate_chart(keyword_in):
     plt.figure(figsize=(10, 6))  # Set the figure size
     plt.plot(average_df['WeekNumber'], average_df[keyword], label='Average Past 4 Years')
     plt.plot(year_current_df['WeekNumber'], year_current_df[keyword], label=current_year)
+    plt.xlabel('WeekNumber')
+    plt.ylabel(keyword)
+    plt.title('Google Trends: '+ keyword)
+    plt.xlim(0, max_week_current) # Set the x-axis limit based on the maximum WeekNumber for 2023
+    plt.legend()
+    plt.savefig('static/chart.png')  # Save the chart as an image file
+    plt.close()
+
+    # ANOTHER CHART
+    yearsub_1_current_df = df[df['date'].dt.year == (current_year - 1)]
+    yearsub_2_current_df = df[df['date'].dt.year == (current_year - 2)]
+    yearsub_3_current_df = df[df['date'].dt.year == (current_year - 3)]
+    yearsub_4_current_df = df[df['date'].dt.year == (current_year - 4)]
+
+    plt.figure(figsize=(10, 6))  # Set the figure size
+
+    plt.plot(year_current_df['WeekNumber'], year_current_df[keyword], label=current_year, linewidth=2.5, linestyle='solid')
+    plt.plot(average_df['WeekNumber'], average_df[keyword], label='Average Past 4 Years', linewidth=2.5, linestyle='solid')
+    plt.plot(yearsub_1_current_df['WeekNumber'], yearsub_1_current_df[keyword], label=(current_year-1), linewidth=1.0, linestyle='dashed')
+    plt.plot(yearsub_2_current_df['WeekNumber'], yearsub_2_current_df[keyword], label=(current_year-2), linewidth=1.0, linestyle='dashed')
+    plt.plot(yearsub_3_current_df['WeekNumber'], yearsub_3_current_df[keyword], label=(current_year-3), linewidth=1.0, linestyle='dashed')
+    plt.plot(yearsub_4_current_df['WeekNumber'], yearsub_4_current_df[keyword], label=(current_year-4), linewidth=1.0, linestyle='dashed')
 
     plt.xlabel('WeekNumber')
     plt.ylabel(keyword)
     plt.title('Google Trends: '+ keyword)
-
     plt.xlim(0, max_week_current) # Set the x-axis limit based on the maximum WeekNumber for 2023
-
     plt.legend()
-    plt.savefig('static/chart.png')  # Save the chart as an image file
+    plt.savefig('static/chart2.png')  # Save the chart as an image file
     plt.close()
+
+# FOR TEST:
+#generate_chart('ac repair')
