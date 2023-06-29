@@ -34,7 +34,7 @@ def generate_chart(keyword_in):
     plt.xlabel('WeekNumber')
     plt.ylabel(keyword)
     plt.title('Google Trends: '+ keyword)
-    plt.xlim(0, max_week_current) # Set the x-axis limit based on the maximum WeekNumber for 2023
+    plt.xlim(0, 52) # Set the x-axis limit based on the maximum WeekNumber for 2023 max_week_current
     plt.legend()
     plt.savefig('static/chart.png')  # Save the chart as an image file
     plt.close()
@@ -57,10 +57,10 @@ def generate_chart(keyword_in):
     plt.xlabel('WeekNumber')
     plt.ylabel(keyword)
     plt.title('Google Trends: '+ keyword)
-    plt.xlim(0, max_week_current) # Set the x-axis limit based on the maximum WeekNumber for 2023
+    plt.xlim(0, 52) # Set the x-axis limit based on the maximum WeekNumber for 2023
     plt.legend()
     plt.savefig('static/chart2.png')  # Save the chart as an image file
     plt.close()
 
 # FOR TEST:
-#generate_chart('ac repair')
+generate_chart('ac repair')
