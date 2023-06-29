@@ -12,6 +12,14 @@ def index():
         return render_template('chart.html')
     return render_template('index.html')
 
+@app.route('/chart', methods=['GET', 'POST'])
+def chart():
+    if request.method == 'POST':
+        keyword_in = request.form['keyword']
+        generate_chart(keyword_in)
+        return render_template('chart.html')
+    return render_template('chart.html')
+
 @app.route('/noaa')
 def noaa():
     generate_noaa()
