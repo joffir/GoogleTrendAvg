@@ -5,6 +5,8 @@
 </head>
 <body>
     <h2>Keyword Search Trends Chart</h2>
+    <a href="{{ url_for('noaa') }}">NOAA Weather Information</a>
+    <br><br>
     <form action="/chart" method="POST">
         <label for="keyword">Enter a keyword:</label>
         <input type="text" id="keyword" name="keyword" required>

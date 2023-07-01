@@ -53,7 +53,7 @@ def generate_noaa():
         df['WeekNumber'] = df['date'].apply(lambda x: datetime.strftime(x, "%U"))
 
         current_year = datetime.now().year
-        filtered_df = df[(df['date'].dt.year < current_year) & (df['date'].dt.year > (current_year - 6))]
+        filtered_df = df[(df['date'].dt.year < current_year) & (df['date'].dt.year > (current_year - 10))]
         average_df = filtered_df.groupby('WeekNumber').mean().reset_index()
         year_current_df = df[df['date'].dt.year == current_year]
         max_week_current = year_current_df['WeekNumber'].max()
@@ -61,7 +61,7 @@ def generate_noaa():
         # PLOT
         for region in regions_to_include:
             plt.figure(figsize=(10, 6))  # Set the figure size
-            plt.plot(average_df['WeekNumber'], average_df[region], label='Average Past 4 Years')
+            plt.plot(average_df['WeekNumber'], average_df[region], label='Average Past 10 Years')
             plt.plot(year_current_df['WeekNumber'], year_current_df[region], label=current_year)
 
             plt.xlabel('WeekNumber')
