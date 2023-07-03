@@ -76,7 +76,7 @@ def generate_noaa():
             plt.savefig(f'static/{region}-chart.png')  # Save the chart as an image file
             plt.close()
             charts.append(f'{region}-chart.png')
-            print(charts)
+            #print(charts)
 
         return charts
     
