@@ -36,7 +36,7 @@ def generate_chart(keyword_in):
     plt.title('Google Trends: '+ keyword)
     plt.xlim(0, 52) # Set the x-axis limit based on the maximum WeekNumber for 2023 max_week_current
     plt.legend()
-    plt.savefig('static/chart.png')  # Save the chart as an image file
+    plt.savefig(f"static/chart1_{keyword_in}.png")  # Save the chart as an image file
     plt.close()
 
     # ANOTHER CHART
@@ -59,8 +59,10 @@ def generate_chart(keyword_in):
     plt.title('Google Trends: '+ keyword)
     plt.xlim(0, 52) # Set the x-axis limit based on the maximum WeekNumber for 2023
     plt.legend()
-    plt.savefig('static/chart2.png')  # Save the chart as an image file
+    plt.savefig(f"static/chart2_{keyword_in}.png")  # Save the chart as an image file
     plt.close()
+
+    return [f"chart1_{keyword_in}.png", f"chart2_{keyword_in}.png"]
 
 # FOR TEST:
 #generate_chart('ac repair')

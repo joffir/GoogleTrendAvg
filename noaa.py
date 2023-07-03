@@ -21,6 +21,7 @@ def generate_noaa():
 
         # Regions to include in the chart
         regions_to_include = [
+            "nat",
             "ne",
             "enc",
             "c",
@@ -29,8 +30,7 @@ def generate_noaa():
             "s",
             "sw",
             "nw",
-            "w",
-            "nat"
+            "w"
         ]
 
         # Iterate over the temperature data
@@ -59,6 +59,7 @@ def generate_noaa():
         max_week_current = year_current_df['WeekNumber'].max()
 
         # PLOT
+        charts = ['map.png']
         for region in regions_to_include:
             plt.figure(figsize=(10, 6))  # Set the figure size
             plt.plot(average_df['WeekNumber'], average_df[region], label='Average Past 10 Years')
@@ -74,6 +75,10 @@ def generate_noaa():
             plt.legend()
             plt.savefig(f'static/{region}-chart.png')  # Save the chart as an image file
             plt.close()
+            charts.append(f'{region}-chart.png')
+            print(charts)
 
+        return charts
+    
     else:
         print("Failed to retrieve the data. Error:", response.status_code)

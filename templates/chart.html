@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Keyword Search Trends Chart</title>
+    <title>Trend Charts</title>
+    <style>
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .image-grid img {
+            width: 50%;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h2>Keyword Search Trends Chart</h2>
-    <a href="{{ url_for('noaa') }}">NOAA Weather Information</a>
+    <a href="{{ url_for('index') }}">Home</a>
     <br><br>
-    <form action="/chart" method="POST">
-        <label for="keyword">Enter a keyword:</label>
-        <input type="text" id="keyword" name="keyword" required>
-        <input type="submit" value="Go">
-    </form>
-    <br>
-    <img src="{{ url_for('static', filename='chart.png') }}" alt="Search Trends Chart"> <br>
-    <img src="{{ url_for('static', filename='chart2.png') }}" alt="Search Trends Chart with Years">
-
+    <div class="image-grid">
+        {% for chart_filename in chart_names %}
+            <img src="{{ url_for('static', filename=chart_filename) }}" alt="Chart">
+        {% endfor %}
+    </div>
 </body>
 </html>
