@@ -9,7 +9,7 @@ def generate_chart(keyword_in):
     current_year = datetime.now().year # Current year so the code can be reused in the future
 
     # PYTRENDS
-    pytrends = TrendReq(hl='en-US', tz=360)
+    pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25))
     keyword = keyword_in
     timeframe = 'today 5-y'
     pytrends.build_payload([keyword], timeframe=timeframe)

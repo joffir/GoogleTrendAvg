@@ -56,14 +56,18 @@ def generate_noaa():
         filtered_df = df[(df['date'].dt.year < current_year) & (df['date'].dt.year > (current_year - 10))]
         average_df = filtered_df.groupby('WeekNumber').mean().reset_index()
         year_current_df = df[df['date'].dt.year == current_year]
+        year_last_df = df[df['date'].dt.year == (current_year - 1)]
+        year_last2_df = df[df['date'].dt.year == (current_year - 2)]
         max_week_current = year_current_df['WeekNumber'].max()
 
         # PLOT
         charts = ['map.png']
         for region in regions_to_include:
             plt.figure(figsize=(10, 6))  # Set the figure size
-            plt.plot(average_df['WeekNumber'], average_df[region], label='Average Past 10 Years')
-            plt.plot(year_current_df['WeekNumber'], year_current_df[region], label=current_year)
+            plt.plot(average_df['WeekNumber'], average_df[region], label='Average Past 10 Years', linewidth=2.5, linestyle='solid')
+            plt.plot(year_current_df['WeekNumber'], year_current_df[region], label=current_year, linewidth=2.5, linestyle='solid')
+            plt.plot(year_last_df['WeekNumber'], year_last_df[region], label=(current_year-1), linewidth=1.5, linestyle='dashed')
+            plt.plot(year_last2_df['WeekNumber'], year_last2_df[region], label=(current_year-2), linewidth=1.5, linestyle='dashed')
 
             plt.xlabel('WeekNumber')
             plt.ylabel(region)
