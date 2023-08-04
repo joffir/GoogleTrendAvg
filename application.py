@@ -9,8 +9,8 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         keyword_in = request.form['keyword']
-        generate_chart(keyword_in)
-        return render_template('chart.html')
+        chart_names = generate_chart(keyword_in)
+        return render_template('chart.html', chart_names=chart_names)
     return render_template('index.html')
 
 @app.route('/chart', methods=['GET', 'POST'])
